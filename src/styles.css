@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Japanese font family */
+@import url(https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css);
+
+.app-background {
+  background: #fafafa;
+}
+
+body {
+  font-family: 'Rounded Mplus 1c', 'arial', 'sans-serif';
+  margin: 0;
+}
+
+app-main {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

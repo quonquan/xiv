@@ -1,0 +1,26 @@
+.navbar-header {
+  padding: 8px 16px;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+.image-container {
+  vertical-align: baseline;
+  display: inline-block;
+  line-height: 36px;
+
+  img {
+    height: 26px;
+    margin: 0 4px 3px 0;
+    vertical-align: middle;
+  }
+
+  span {
+    text-align: center;
+  }
+}
