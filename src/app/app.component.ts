@@ -20,24 +20,23 @@ export class AppComponent implements OnInit {
     private $loginStateService: LoginStateService,
     private $userService: UserService
   ) {
-    this.$firebaseService.getFirebaseApp().subscribe(app => {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.$loginStateService.changeLoginState(<LoginState>{
-            isLogin: true,
-            isCheck: false
-          });
-          this.$userService.setUser(<User>{
-            token: user.refreshToken,
-            email: user.email,
-            photoURL: user.photoURL
-          });
-          return;
-        }
+    const app = this.$firebaseService.getFirebaseApp();
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
         this.$loginStateService.changeLoginState(<LoginState>{
-          isLogin: false,
+          isLogin: true,
           isCheck: false
         });
+        this.$userService.setUser(<User>{
+          token: user.refreshToken,
+          email: user.email,
+          photoURL: user.photoURL
+        });
+        return;
+      }
+      this.$loginStateService.changeLoginState(<LoginState>{
+        isLogin: false,
+        isCheck: false
       });
     });
   }

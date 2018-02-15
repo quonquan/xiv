@@ -15,21 +15,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   loginWithGoogle() {
-    this.$firebaseService.getFirebaseApp().subscribe(app => {
-      firebase.auth().languageCode = 'ja';
-      const googleProvider = new firebase.auth.GoogleAuthProvider();
-      googleProvider.setCustomParameters({
-        login_hint: 'user@example.com'
-      });
-      firebase
-        .auth(app)
-        .signInWithPopup(googleProvider)
-        .then(ret => {
-          window.location.reload();
-        })
-        .catch(err => {
-          alert('ログインに失敗しました');
-        });
+    const app = this.$firebaseService.getFirebaseApp();
+    firebase.auth().languageCode = 'ja';
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    googleProvider.setCustomParameters({
+      login_hint: 'user@example.com'
     });
+    firebase
+      .auth(app)
+      .signInWithPopup(googleProvider)
+      .then(ret => {
+        window.location.reload();
+      })
+      .catch(err => {
+        alert('ログインに失敗しました');
+      });
   }
 }
