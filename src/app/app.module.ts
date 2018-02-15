@@ -29,6 +29,10 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [AppComponent, NavbarComponent, LoginComponent, MainComponent],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     HttpModule,
     BrowserAnimationsModule,
